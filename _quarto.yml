@@ -1,0 +1,11 @@
+project:
+  title: "ESS PROJECT PROPOSAL"
+  output-dir: docs
+  type: manuscript
+format:
+  html:
+    self-contained: true
+
+
+
+

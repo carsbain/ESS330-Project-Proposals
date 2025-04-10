@@ -1,0 +1,69 @@
+---
+title: "Code"
+author: "Carson Bainbridge"
+date: "2025-04-09"
+format: html
+execute:
+  echo: true
+---
+
+```{r}
+library(powerjoin)
+library(glue)
+library(vip)
+library(baguette)
+#---------Load in NASA CLPX dataset-------------
+iop1 <- read.csv("data/pit_iop1_v2_density.csv")
+iop2 <- read.csv("data/pit_iop2_v2_density.csv")
+#---------Load in CAMELS dataset----------------
+root  <- 'https://gdex.ucar.edu/dataset/camels/file'
+
+download.file('https://gdex.ucar.edu/dataset/camels/file/camels_attributes_v2.0.pdf', 
+              'data/camels_attributes_v2.0.pdf')
+
+types <- c("clim", "geol", "soil", "topo", "vege", "hydro")
+remote_files  <- glue('{root}/camels_{types}.txt')
+local_files   <- glue('data/camels_{types}.txt')
+
+walk2(remote_files, local_files, download.file, quiet = TRUE)
+
+camels <- map(local_files, read_delim, show_col_types = FALSE) 
+
+camels <- power_full_join(camels ,by = 'gauge_id')
+
+camels <- map(remote_files, read_delim, show_col_types = FALSE) |> 
+  power_full_join(by = 'gauge_id')
+
+#Creating Visualizations of Data 
+print(iop1)
+print(iop2)
+```
+
+```{r}
+print(iop1)
+print(iop2)
+print(camels)
+```
+```{r}
+camels %>%
+  filter(q_mean > 5) %>%
+  select(q_mean)
+#USING 5 RETURNS 38 VALUES 
+#need to figure out which specific gauge ID's we need to filter too 
+```
+
+```{r}
+#filtering IOP data to rbsp site 
+
+filtered_iop1 <- iop1 %>%
+  filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
+  select(DNS_AVG, TOP)
+
+filtered_iop2 <- iop2 %>%
+  filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
+  select(DNS_AVG, TOP) 
+
+filtered_iop1
+filtered_iop2
+```
+

@@ -1,0 +1,20 @@
+---
+title: ESS 330 Project Proposal
+authors:
+  - name: Carson Bainbridge
+    affiliation: Colorado State University ESS
+    roles: writing
+    corresponding: true
+  - name: Kate Laidlaw 
+    affiliation: Colorado State University ESS
+    roles: writing 
+    corresponding: false
+bibliography: references.bib
+
+---
+1.Title: Evaluating the Correlation between Snow Water Equivalent and Stream Flow in Rabbit Ears Pass, Colorado
+2. Introduction 
+
+3. Exploring Data 
+
+4.Methods 
