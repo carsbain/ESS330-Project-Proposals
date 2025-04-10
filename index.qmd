@@ -14,7 +14,116 @@ bibliography: references.bib
 ---
 1.Title: Evaluating the Correlation between Snow Water Equivalent and Stream Flow in Rabbit Ears Pass, Colorado
 2. Introduction 
+Snowpack plays an important role in hydrological, ecological, and climate systems. However, this variable has been changing with a warming climate. The beginning of the accumulation season has shifted later in many regions, and total snow cover will decrease, with limited exceptions (Hosaka et al. 2005). Snow is a very important resource. Snowpack turns into freshwater that flows downstream to many individuals (Bormann, 2013). Snow influences many climate factors across the globe. Even in areas that don’t receive much snow, they can still feel the effects. Snow has a high albedo, meaning that it is highly reflective and returns a significant amount of radiation back to space. This causes the radiation to not warm our planet as much since it is being reflected. With a decrease in the amount of snow cover over time, we are going to see a warmer climate effect. Many people also choose to recreate in snow. The effects of a changing climate on snow are going to have a direct effect on this aspect of the economy and people’s well-being. To predict and manage the impacts of climate change, it is crucial to examine snowpack variability over time and across spatial domains. Snow Water Equivalent (SWE) is a measure of depth and density that has been used to determine how much water snow contains, quantifying snowpack characteristics. SWE has been used as a measure for many snow-related analyses over time, being a secondary factor in many experiments. Understanding causes for differences in SWE over time is influential to understanding snowpack characteristics, which is a key factor in snow related research. An understanding of the spatial patterns of vanishing snowpack can be determined from snow depth at maximum accumulation (Anderton et al., 2003) and can be used to help model snow behavior. 
 
-3. Exploring Data 
+The measured change in Snow Water Equivalent can be used as an indicator of the changing climate, while also predicting the seasonal stream flow for a given year. Studying the correlation between Snow Water Equivalent and stream flow allows researchers to better understand the relationship between these two variables and helps land managers better predict seasonal stream flow. Yearly stream flow is a highly monitored event in natural resource management due to its widespread influence on other natural phenomena in the spring. Too much stream flow can result in soil erosion and flooding, while too little stream flow can degrade water quality and reduce habitat availability to aquatic species (Part et. All, 2025). Additionally, management of water resources for local municipal water and agriculture is largely contingent upon seasonal stream flow. It helps plan water storage and release, as well as irrigation and hydropower levels (USDA). Developing the accuracy of stream flow predictions based off its relationship with Snow Water Equivalent would generate more effective management of water resources, leading to better maintenance of the health of natural and anthropogenic systems across the local landscape.  
 
-4.Methods 
+The first dataset that we are looking at was taken from the NASA Cold Land Processes Experiment. The data were obtained (downloaded) from the National Snow and Ice Data Center (NSIDC) in Boulder, Colorado. Data was sampled in 1-meter transects during two intense observation periods (IOP) over two years (four total). These measurements were taken by the NASA Cold Lands Processes Experiment (CLPX), done in 2002 and 2003. Measurements were taken in late February and late March to ensure differences in snowpack properties. Snow density was measured with a 1-liter wedge sampler. These measurements were made in 10-cm increments from snow surface to ground. In the above tree line snowpacks in Frasier Alpine and all North Park sites, snow, ice, and permafrost sampler tube were used to measure density. Density is calculated using the weight and volume of the snow sample.  
+
+To analyze stream flow, we will be using NCAR’s CAMELS data (Catchment Attributes and Meteorology for Large-sample Studies.) This data contains a wide array of variables that measure hydrologic response in small to medium sized basins across the United States from the period 1980 through 2010. The hydrologic data in this data set was obtained from the USGS National Water Information System, which measures hydrologic variables across approximately 1.9 million sites throughout the continental United States, the District of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa and the Commonwealth of the North American Mariana Islands. We are analyzing the q_mean (mean daily discharge) for two USGS gages in the Colorado River downstream from the Rabit Ears peak: gage 09040500 (upstream,) and gage 09034250 (downstream.)  
+
+We will be using Rstudio to explore both datasets (CAMELS and NASA CLPX). The CAMELS dataset includes streamflow information for different rivers across the US. This helps us to look at changing water levels over time. The NASA CLPX data includes depth and density variables, which we are using to predict SWE. Both datasets will be loaded and read into Rstudio for comparison to look at patterns between the datasets.  
+
+Literature Cited: 
+
+Anderton, S. P., White, S. M., & Alvera, B. (2004). Evaluation of spatial variability in snow water equivalent for a high mountain catchment. Hydrological Processes, 18(3), 435–453. https://doi.org/10.1002/hyp.1319 
+
+Bormann, K. J., Westra, S., Evans, J. P., & McCabe, M. F. (2013). Spatial and temporal variability in seasonal snow density. Journal of Hydrology, 484, 63–73. https://doi.org/10.1016/j.jhydrol.2013.01.032 
+
+Hosaka, M., Nohara, D., & Kitoh, A. (2005). Changes in snow cover and snow water equivalent due to global warming simulated by a 20km-mesh global atmospheric model. Sola, 1, 93-96. https://doi.org/10.2151/sola.2005-025 
+
+Park, S.-Y., Moon, H.-T., Kim, J.-S., & Lee, J.-H. (2025). Assessing the impact of human-induced and climate change-driven streamflow alterations on freshwater ecosystems. Ecohydrology &amp; Hydrobiology, 25(1), 1–9. https://doi.org/10.1016/j.ecohyd.2023.09.003 
+
+US Department of Agriculture. (n.d.). Water supply forecasting. Natural Resources Conservation Service. https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/water-supply#:~:text=A%20complex%20network%20of%20dams,well%20as%20agricultural%20planting%20decisions. 
+
+CAMELS citation  
+
+A. Newman; K. Sampson; M. P. Clark; A. Bock; R. J. Viger; D. Blodgett, 2014. A large-sample watershed-scale hydrometeorological dataset for the contiguous USA. Boulder, CO: UCAR/NCAR. https://dx.doi.org/10.5065/D6MW2F4D 
+
+CLPX data citation  
+
+Elder, K., Cline, D., Liston, G. E., & Armstrong, R. (2009). NASA Cold Land Processes Experiment (CLPX 2002/03): Field Measurements of Snowpack Properties and Soil Moisture. https://doi.org/10.1175/2008JHM877.1 
+
+ 
+
+3.Exploring your data 
+```{r}
+library(powerjoin)
+library(glue)
+library(vip)
+library(purrr)
+library(baguette)
+library(readr)
+library(tidyverse)
+library(tidymodels)
+#---------Load in NASA CLPX dataset-------------
+iop1 <- read.csv("data/pit_iop1_v2_density.csv")
+iop2 <- read.csv("data/pit_iop2_v2_density.csv")
+#---------Load in CAMELS dataset----------------
+root  <- 'https://gdex.ucar.edu/dataset/camels/file'
+
+download.file('https://gdex.ucar.edu/dataset/camels/file/camels_attributes_v2.0.pdf', 
+              'data/camels_attributes_v2.0.pdf')
+
+types <- c("clim", "geol", "soil", "topo", "vege", "hydro")
+remote_files  <- glue('{root}/camels_{types}.txt')
+local_files   <- glue('data/camels_{types}.txt')
+
+walk2(remote_files, local_files, download.file, quiet = TRUE)
+
+camels <- map(local_files, read_delim, show_col_types = FALSE) 
+
+camels <- power_full_join(camels ,by = 'gauge_id')
+
+camels <- map(remote_files, read_delim, show_col_types = FALSE) |> 
+  power_full_join(by = 'gauge_id')
+```
+IOP 1
+```{r}
+filtered_iop1 <- iop1 %>%
+  filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
+  select(DNS_AVG, TOP)
+
+filtered_iop1
+```
+
+IOP 2
+```{r}
+filtered_iop2 <- iop2 %>%
+  filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
+  select(DNS_AVG, TOP) 
+
+filtered_iop2
+```
+
+The first two tables we are presenting are from IOP 1 and IOP 2 from the CLPX dataset. We rearranged the data to include only the data from Rabbit Ears Pass, Colorado. As well as filtering for density averages and top depth height. This will allow us to calculate SWE later down the line with density * depth.  
+
+ 
+
+CAMELS 
+```{r}
+camels %>%
+  filter(q_mean > 5) %>%
+  select(q_mean)
+```
+
+
+This figure shows the CAMELS dataset filtered to show only “q_mean” which is daily discharge values. The CAMELS dataset was filtered to show q_mean values greater than 5, to show when there was high discharge present. More cleaning of the data will need to be done to filter out specific USGS gauge sites that we are interested in. With that, we might need to change the parameter of  q_mean >5.  
+
+4. Identifying Methods 
+To answer our research question, we will integrate our findings to summarize and compare SWE and streamflow values over time and space, show the visual trends and potential anomalies, and evaluate the linearity of the relationship. To do this, we will investigate the relationship between snow water equivalent and streamflow in Rabbit Ears Pass through a correlation-based modeling approach. Our focus is on the melt season, analyzing March SWE values and their association with April–June streamflow. We will create scatterplots to visualize the relationship between SWE (from CLPX) and streamflow (from CAMELS) across different years, summarize statistics to describe the distribution of SWE and streamflow values, and build models that help test the relationship. We will use a simple linear regression model, as well as run multiple tests we have learned in the lab on it to determine whether a linear relationship exists, summarize the findings, and quantify its strength. This model will help us assess the potential for predicting streamflow based on SWE alone. 
+
+ 
+
+To support this, we have begun filtering the CAMELS streamflow data using a q_mean > 5 threshold to isolate high-flow years. This gave us 38 candidate years for closer analysis, which may correspond to higher-SWE periods. We are also filtering our SWE data using site-specific identifiers—such as isolating records for the Reabbit Ears site from IOP datasets—to improve spatial alignment between snow pit locations and downstream gage stations. This preprocessing step helps address the common challenge of inconsistent site matching, while narrowing our focus to sites with the most reliable and relevant measurements. 
+
+We currently have access to key datasets necessary for our analysis. This includes the aforementioned SWE data from CLPX (Cold Land Processes Field Experiment), which provides high-resolution snow depth and density data from snow pit measurements, and streamflow and meteorological data from CAMELS (Catchment Attributes and Meteorology for Large-Sample Studies). 
+
+ 
+
+We anticipate few challenges. There is limited coverage of time for our SWE data, which may constrain predictive power. Our choice of a linear regression model may introduce limitations, as it assumes a linear relationship and does not incorporate other potential contributing environmental influences already known to affect stream flow in general that may uniquely impact our region, such as non-snow precipitation, local topography, elevation, soil composition, and potential human influences. These are limitations we accept due to our own constraints in available data and time. 
+
+ 
+
+Nonetheless, these methods allow us to assess a clear, testable relationship between SWE and streamflow using accessible, real-world data. They form a foundational approach for ecosystem science by helping us identify potential predictive relationships and establish baseline trends. This work will lay the groundwork for future, more complex models—such as multivariate regression—that can better account for the additional variables and challenges described above. 
+
