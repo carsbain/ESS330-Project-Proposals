@@ -58,7 +58,7 @@ library(tidyverse)
 library(tidymodels)
 #---------Load in NASA CLPX dataset-------------
 iop1 <- read.csv("data/pit_iop1_v2_density.csv")
-iop2 <- read.csv("data/pit_iop2_v2_density.csv")
+iop3 <- read.csv("data/pit_iop3_v2_density.csv")
 #---------Load in CAMELS dataset----------------
 root  <- 'https://gdex.ucar.edu/dataset/camels/file'
 
@@ -82,30 +82,92 @@ IOP 1
 ```{r}
 filtered_iop1 <- iop1 %>%
   filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
-  select(DNS_AVG, TOP)
+  select(PIT_NAME,DNS_AVG, TOP) %>% 
+  mutate(DNS_AVG = as.numeric(DNS_AVG),
+         PIT_NAME = toupper(PIT_NAME)
+         )
 
-filtered_iop1
+  
+date_seq <- seq.Date(from = as.Date("2002-02-17"), 
+                     to = as.Date("2002-02-24"), 
+                     by = "month")
+
+head(filtered_iop1)
+
+
+site_tables <- filtered_iop1 %>%
+  group_by(PIT_NAME) %>%
+  group_split() %>%
+  set_names(map_chr(., ~ unique(.x$PIT_NAME)))
+
+print(site_tables)
+
 ```
 
-IOP 2
+
 ```{r}
-filtered_iop2 <- iop2 %>%
+#SWE FOR EACH PIT SITE 
+swe_tables <- filtered_iop1 %>%
+  group_by(PIT_NAME) %>%
+  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.7)
+  
+print(swe_tables) 
+```
+```{r}
+#join back to original data 
+swe_tables <- swe_tables %>%
+  mutate(PIT_NAME = toupper(trimws(PIT_NAME)))
+
+site_tables_clean <- map(site_tables, function(df) {
+  df <- df %>%
+    mutate(PIT_NAME = toupper(trimws(PIT_NAME))) %>% 
+    left_join(swe_tables, by = "PIT_NAME")
+  return(df)
+})
+
+site_tables_clean
+
+```
+
+IOP 3
+```{r}
+filtered_iop3 <- iop3 %>%
   filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
-  select(DNS_AVG, TOP) 
+  select(PIT_NAME,DNS_AVG, TOP) %>% 
+  mutate(DNS_AVG = as.numeric(DNS_AVG),
+         PIT_NAME = toupper(PIT_NAME)
+         )
 
-filtered_iop2
+head(filtered_iop3)
+
+date_seq <- seq.Date(from = as.Date("2003-02-17"), 
+                     to = as.Date("2003-02-25"), 
+                     by = "month")
+
+swe = mean(filtered_iop3$DNS_AVG, na.rm = TRUE) * 2.7
+
+
+
+site_tables <- filtered_iop3 %>%
+  group_by(PIT_NAME) %>%
+  group_split() %>%
+  set_names(map_chr(., ~ unique(.x$PIT_NAME)))
+
+print(site_tables)
+
 ```
 
-The first two tables we are presenting are from IOP 1 and IOP 2 from the CLPX dataset. We rearranged the data to include only the data from Rabbit Ears Pass, Colorado. As well as filtering for density averages and top depth height. This will allow us to calculate SWE later down the line with density * depth.  
-
- 
-
-CAMELS 
 ```{r}
-camels %>%
-  filter(q_mean > 5) %>%
-  select(q_mean)
+#SWE FOR EACH PIT SITE 
+swe_tables <- filtered_iop3 %>%
+  group_by(PIT_NAME) %>%
+  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.88)
+  
+print(swe_tables) 
 ```
+
+
+The first two tables we are presenting are from IOP 1 and IOP 3 from the CLPX dataset. We rearranged the data to include only the data from Rabbit Ears Pass, Colorado. As well as filtering for density averages and top depth height. This will allow us to calculate SWE later down the line with density * depth.  
 
 
 This figure shows the CAMELS dataset filtered to show only “q_mean” which is daily discharge values. The CAMELS dataset was filtered to show q_mean values greater than 5, to show when there was high discharge present. More cleaning of the data will need to be done to filter out specific USGS gauge sites that we are interested in. With that, we might need to change the parameter of  q_mean >5.  
@@ -127,3 +189,100 @@ We anticipate few challenges. There is limited coverage of time for our SWE data
 
 Nonetheless, these methods allow us to assess a clear, testable relationship between SWE and streamflow using accessible, real-world data. They form a foundational approach for ecosystem science by helping us identify potential predictive relationships and establish baseline trends. This work will lay the groundwork for future, more complex models—such as multivariate regression—that can better account for the additional variables and challenges described above. 
 
+
+
+
+```{r}
+#SWE over time 
+#streamflow over time 
+
+library(dataRetrieval)
+library(tsibble)
+library(dplyr)
+
+streamflow_2002 <- readNWISdv(siteNumber = "09041090",    
+                          parameterCd = "00060",      
+                          startDate = "2002-02-01",  
+                          endDate = "2002-03-31") |>  
+  renameNWISColumns() |>                              
+  group_by(Date) |>                                   
+  summarise(Flow = mean(Flow))  
+
+streamflow_2003 <- readNWISdv(siteNumber = "09041090",    
+                          parameterCd = "00060",      
+                          startDate = "2003-02-01",  
+                          endDate = "2003-03-31") |>  
+  renameNWISColumns() |>                              
+  group_by(Date) |>                                   
+  summarise(Flow = mean(Flow)) 
+
+```
+```{r}
+muddy2002_flow_tb <- as_tsibble(streamflow_2002)
+
+muddy2003_flow_tb <- as_tsibble(streamflow_2003)
+
+```
+```{r}
+head(muddy2002_flow_tb)
+
+head(muddy2003_flow_tb)
+```
+
+```{r}
+library(feasts)
+muddy2002_decomp <- muddy2002_flow_tb |>
+  model(STL(Flow ~ season(window = "periodic"))) |>
+  components()
+
+glimpse(muddy2002_flow_tb)
+
+muddy2003_decomp <- muddy2003_flow_tb |>
+  model(STL(Flow ~ season(window = "periodic"))) |>
+  components()
+
+glimpse(muddy2002_flow_tb)
+
+```
+```{r}
+muddy2002_decomp <- as_tibble(muddy2002_decomp)
+
+muddy2002_decomp_long <- muddy2002_decomp |>
+  select(Date, trend, season_week, remainder) |>
+  pivot_longer(cols = c(trend, season_week, remainder),
+               names_to = "component",
+               values_to = "value")
+
+ggplot(muddy2002_decomp_long, aes(x = Date, y = value)) +
+  geom_line(color = "steelblue") +
+  facet_wrap(~ component, scales = "free_y", ncol = 1) +
+  labs(
+    title = "STL Decomposition of Muddy Creek Streamflow",
+    x = NULL,
+    y = "Discharge (cfs)"
+  ) +
+  theme_minimal()
+
+```
+Our results show that the streamflow increases in both 2002 and 2003. There is an upward trend occuring. Overall, there is an overarching increasing in streamflow as you get closer to the summer months. Streamglow increases in value across time. 
+```{r}
+swe_tables <- filtered_iop1 %>%
+  group_by(PIT_NAME) %>%
+  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.7)
+  
+print(swe_tables) 
+```
+```{r}
+swe_tables <- filtered_iop3 %>%
+  group_by(PIT_NAME) %>%
+  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.88)
+  
+print(swe_tables) 
+```
+SWE values decreases from 2002-2003. There are higher values in 2002 than 2003. There are less values present in 2003, but the values in 2002 have a higher average mean.  
+
+Discussion 
+
+Our results show a correlation between streamflow and snow water equivalent (SWE). SWE and snow depth are directly related to snow density and variability (Bormann et al., 2013). After the analysis of the NASA Cold Land Processes Experiment data, we noticed trends in the SWE and bulk density amongst two observation periods in the Rabbit Ears – Buffalo Pass area in northern Colorado. In the first and third observation periods in late February 2002/3, there were similar values calculated for SWE, and similar trends among the bulk density graphs. The fluctuation patterns are the same. These observed changes can be explained by seasonal variation in snowfall from late February to late March, when the data from IOP one and IOP two were collected. IOP four was included in the SWE analysis to show the similarities between IOP one and two in comparison to the large difference between IOP four. 
+
+Streamflow increase from 2002-03 shows an opposite trend from snow water equivalent. More reasearch should be done to prove why this occurs. 
