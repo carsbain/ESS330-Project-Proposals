@@ -9,6 +9,10 @@ authors:
     affiliation: Colorado State University ESS
     roles: writing 
     corresponding: false
+  - name: Lance Lowell
+    affiliation: Colorado State University ESS
+    roles: writing 
+    corresponding: false
 bibliography: references.bib
 ---
 
