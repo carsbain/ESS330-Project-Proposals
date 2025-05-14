@@ -10,43 +10,25 @@ authors:
     roles: writing 
     corresponding: false
 bibliography: references.bib
-
 ---
-1.Title: Evaluating the Correlation between Snow Water Equivalent and Stream Flow in Rabbit Ears Pass, Colorado
-2. Introduction 
-Snowpack plays an important role in hydrological, ecological, and climate systems. However, this variable has been changing with a warming climate. The beginning of the accumulation season has shifted later in many regions, and total snow cover will decrease, with limited exceptions (Hosaka et al. 2005). Snow is a very important resource. Snowpack turns into freshwater that flows downstream to many individuals (Bormann, 2013). Snow influences many climate factors across the globe. Even in areas that don’t receive much snow, they can still feel the effects. Snow has a high albedo, meaning that it is highly reflective and returns a significant amount of radiation back to space. This causes the radiation to not warm our planet as much since it is being reflected. With a decrease in the amount of snow cover over time, we are going to see a warmer climate effect. Many people also choose to recreate in snow. The effects of a changing climate on snow are going to have a direct effect on this aspect of the economy and people’s well-being. To predict and manage the impacts of climate change, it is crucial to examine snowpack variability over time and across spatial domains. Snow Water Equivalent (SWE) is a measure of depth and density that has been used to determine how much water snow contains, quantifying snowpack characteristics. SWE has been used as a measure for many snow-related analyses over time, being a secondary factor in many experiments. Understanding causes for differences in SWE over time is influential to understanding snowpack characteristics, which is a key factor in snow related research. An understanding of the spatial patterns of vanishing snowpack can be determined from snow depth at maximum accumulation (Anderton et al., 2003) and can be used to help model snow behavior. 
 
-The measured change in Snow Water Equivalent can be used as an indicator of the changing climate, while also predicting the seasonal stream flow for a given year. Studying the correlation between Snow Water Equivalent and stream flow allows researchers to better understand the relationship between these two variables and helps land managers better predict seasonal stream flow. Yearly stream flow is a highly monitored event in natural resource management due to its widespread influence on other natural phenomena in the spring. Too much stream flow can result in soil erosion and flooding, while too little stream flow can degrade water quality and reduce habitat availability to aquatic species (Part et. All, 2025). Additionally, management of water resources for local municipal water and agriculture is largely contingent upon seasonal stream flow. It helps plan water storage and release, as well as irrigation and hydropower levels (USDA). Developing the accuracy of stream flow predictions based off its relationship with Snow Water Equivalent would generate more effective management of water resources, leading to better maintenance of the health of natural and anthropogenic systems across the local landscape.  
+# **Evaluating the Correlation between Snow Water Equivalent and Stream Flow in Rabbit Ears Pass, Colorado** 
 
-The first dataset that we are looking at was taken from the NASA Cold Land Processes Experiment. The data were obtained (downloaded) from the National Snow and Ice Data Center (NSIDC) in Boulder, Colorado. Data was sampled in 1-meter transects during two intense observation periods (IOP) over two years (four total). These measurements were taken by the NASA Cold Lands Processes Experiment (CLPX), done in 2002 and 2003. Measurements were taken in late February and late March to ensure differences in snowpack properties. Snow density was measured with a 1-liter wedge sampler. These measurements were made in 10-cm increments from snow surface to ground. In the above tree line snowpacks in Frasier Alpine and all North Park sites, snow, ice, and permafrost sampler tube were used to measure density. Density is calculated using the weight and volume of the snow sample.  
+## **Introduction** 
 
-To analyze stream flow, we will be using NCAR’s CAMELS data (Catchment Attributes and Meteorology for Large-sample Studies.) This data contains a wide array of variables that measure hydrologic response in small to medium sized basins across the United States from the period 1980 through 2010. The hydrologic data in this data set was obtained from the USGS National Water Information System, which measures hydrologic variables across approximately 1.9 million sites throughout the continental United States, the District of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa and the Commonwealth of the North American Mariana Islands. We are analyzing the q_mean (mean daily discharge) for two USGS gages in the Colorado River downstream from the Rabit Ears peak: gage 09040500 (upstream,) and gage 09034250 (downstream.)  
+Snowpack plays an important role in hydrological, ecological, and climate systems. However, this variable has been changing with a warming climate. The beginning of the accumulation season has shifted later in many regions, and total snow cover will decrease, with limited exceptions (Hosaka et al. 2005). Snow is a very important resource. Snowpack turns into freshwater that flows downstream to many individuals (Bormann, 2013). Snow influences many climate factors across the globe. Even in areas that don’t receive much snow, they can still feel the effects. Snow has a high albedo, meaning that it is highly reflective and returns a significant amount of radiation back to space. This causes the radiation to not warm our planet as much since it is being reflected. With a decrease in the amount of snow cover over time, we are going to see a warmer climate effect. Many people also choose to recreate in snow. The effects of a changing climate on snow are going to have a direct effect on this aspect of the economy and people’s well-being. To predict and manage the impacts of climate change, it is crucial to examine snowpack variability over time and across spatial domains. Snow Water Equivalent (SWE) is a measure of depth and density that has been used to determine how much water snow contains, quantifying snowpack characteristics. SWE has been used as a measure for many snow-related analyses over time, being a secondary factor in many experiments. Understanding causes for differences in SWE over time is influential to understanding snowpack characteristics, which is a key factor in snow related research. An understanding of the spatial patterns of vanishing snowpack can be determined from snow depth at maximum accumulation (Anderton et al., 2003) and can be used to help model snow behavior.
 
-We will be using Rstudio to explore both datasets (CAMELS and NASA CLPX). The CAMELS dataset includes streamflow information for different rivers across the US. This helps us to look at changing water levels over time. The NASA CLPX data includes depth and density variables, which we are using to predict SWE. Both datasets will be loaded and read into Rstudio for comparison to look at patterns between the datasets.  
+The measured change in Snow Water Equivalent can be used as an indicator of the changing climate, while also predicting the seasonal stream flow for a given year. Studying the correlation between Snow Water Equivalent and stream flow allows researchers to better understand the relationship between these two variables and helps land managers better predict seasonal stream flow. Yearly stream flow is a highly monitored event in natural resource management due to its widespread influence on other natural phenomena in the spring. Too much stream flow can result in soil erosion and flooding, while too little stream flow can degrade water quality and reduce habitat availability to aquatic species (Part et. All, 2025). Additionally, management of water resources for local municipal water and agriculture is largely contingent upon seasonal stream flow. It helps plan water storage and release, as well as irrigation and hydropower levels (USDA). Developing the accuracy of stream flow predictions based off its relationship with Snow Water Equivalent would generate more effective management of water resources, leading to better maintenance of the health of natural and anthropogenic systems across the local landscape.
 
-Literature Cited: 
+The first dataset that we are looking at was taken from the NASA Cold Land Processes Experiment. The data were obtained (downloaded) from the National Snow and Ice Data Center (NSIDC) in Boulder, Colorado. Data was sampled in 1-meter transects during two intense observation periods (IOP) over two years (four total). These measurements were taken by the NASA Cold Lands Processes Experiment (CLPX), done in 2002 and 2003. Measurements were taken in late February and late March to ensure differences in snowpack properties. Snow density was measured with a 1-liter wedge sampler. These measurements were made in 10-cm increments from snow surface to ground. In the above tree line snowpacks in Frasier Alpine and all North Park sites, snow, ice, and permafrost sampler tube were used to measure density. Density is calculated using the weight and volume of the snow sample.
 
-Anderton, S. P., White, S. M., & Alvera, B. (2004). Evaluation of spatial variability in snow water equivalent for a high mountain catchment. Hydrological Processes, 18(3), 435–453. https://doi.org/10.1002/hyp.1319 
+To analyze stream flow, we will be using NCAR’s CAMELS data (Catchment Attributes and Meteorology for Large-sample Studies.) This data contains a wide array of variables that measure hydrologic response in small to medium sized basins across the United States from the period 1980 through 2010. The hydrologic data in this data set was obtained from the USGS National Water Information System, which measures hydrologic variables across approximately 1.9 million sites throughout the continental United States, the District of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa and the Commonwealth of the North American Mariana Islands. We are analyzing the q_mean (mean daily discharge) for two USGS gages in the Colorado River downstream from the Rabit Ears peak: gage 09040500 (upstream,) and gage 09034250 (downstream.)
 
-Bormann, K. J., Westra, S., Evans, J. P., & McCabe, M. F. (2013). Spatial and temporal variability in seasonal snow density. Journal of Hydrology, 484, 63–73. https://doi.org/10.1016/j.jhydrol.2013.01.032 
+We will be using Rstudio to explore both datasets (CAMELS and NASA CLPX). The CAMELS dataset includes streamflow information for different rivers across the US. This helps us to look at changing water levels over time. The NASA CLPX data includes depth and density variables, which we are using to predict SWE. Both datasets will be loaded and read into Rstudio for comparison to look at patterns between the datasets.
 
-Hosaka, M., Nohara, D., & Kitoh, A. (2005). Changes in snow cover and snow water equivalent due to global warming simulated by a 20km-mesh global atmospheric model. Sola, 1, 93-96. https://doi.org/10.2151/sola.2005-025 
 
-Park, S.-Y., Moon, H.-T., Kim, J.-S., & Lee, J.-H. (2025). Assessing the impact of human-induced and climate change-driven streamflow alterations on freshwater ecosystems. Ecohydrology &amp; Hydrobiology, 25(1), 1–9. https://doi.org/10.1016/j.ecohyd.2023.09.003 
+## Exploring data
 
-US Department of Agriculture. (n.d.). Water supply forecasting. Natural Resources Conservation Service. https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/water-supply#:~:text=A%20complex%20network%20of%20dams,well%20as%20agricultural%20planting%20decisions. 
-
-CAMELS citation  
-
-A. Newman; K. Sampson; M. P. Clark; A. Bock; R. J. Viger; D. Blodgett, 2014. A large-sample watershed-scale hydrometeorological dataset for the contiguous USA. Boulder, CO: UCAR/NCAR. https://dx.doi.org/10.5065/D6MW2F4D 
-
-CLPX data citation  
-
-Elder, K., Cline, D., Liston, G. E., & Armstrong, R. (2009). NASA Cold Land Processes Experiment (CLPX 2002/03): Field Measurements of Snowpack Properties and Soil Moisture. https://doi.org/10.1175/2008JHM877.1 
-
- 
-
-3.Exploring your data 
 ```{r}
 library(powerjoin)
 library(glue)
@@ -60,26 +42,12 @@ library(tidymodels)
 iop1 <- read.csv("data/pit_iop1_v2_density.csv")
 iop3 <- read.csv("data/pit_iop3_v2_density.csv")
 #---------Load in CAMELS dataset----------------
-root  <- 'https://gdex.ucar.edu/dataset/camels/file'
-
-download.file('https://gdex.ucar.edu/dataset/camels/file/camels_attributes_v2.0.pdf', 
-              'data/camels_attributes_v2.0.pdf')
-
-types <- c("clim", "geol", "soil", "topo", "vege", "hydro")
-remote_files  <- glue('{root}/camels_{types}.txt')
-local_files   <- glue('data/camels_{types}.txt')
-
-walk2(remote_files, local_files, download.file, quiet = TRUE)
-
-camels <- map(local_files, read_delim, show_col_types = FALSE) 
-
-camels <- power_full_join(camels ,by = 'gauge_id')
-
-camels <- map(remote_files, read_delim, show_col_types = FALSE) |> 
-  power_full_join(by = 'gauge_id')
 ```
+
 IOP 1
+
 ```{r}
+library(flextable)
 filtered_iop1 <- iop1 %>%
   filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
   select(PIT_NAME,DNS_AVG, TOP) %>% 
@@ -100,36 +68,13 @@ site_tables <- filtered_iop1 %>%
   group_split() %>%
   set_names(map_chr(., ~ unique(.x$PIT_NAME)))
 
-print(site_tables)
-
+flextable(filtered_iop1)
 ```
+Table 1. Average Density and Top depth shown for measurements within each pit site in the Rabbit Ears Buffalo Pass Intense Observation Period in February 2002.
 
-
-```{r}
-#SWE FOR EACH PIT SITE 
-swe_tables <- filtered_iop1 %>%
-  group_by(PIT_NAME) %>%
-  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.7)
-  
-print(swe_tables) 
-```
-```{r}
-#join back to original data 
-swe_tables <- swe_tables %>%
-  mutate(PIT_NAME = toupper(trimws(PIT_NAME)))
-
-site_tables_clean <- map(site_tables, function(df) {
-  df <- df %>%
-    mutate(PIT_NAME = toupper(trimws(PIT_NAME))) %>% 
-    left_join(swe_tables, by = "PIT_NAME")
-  return(df)
-})
-
-site_tables_clean
-
-```
 
 IOP 3
+
 ```{r}
 filtered_iop3 <- iop3 %>%
   filter(grepl("^rbsp", PIT_NAME, ignore.case = TRUE)) %>%
@@ -137,8 +82,6 @@ filtered_iop3 <- iop3 %>%
   mutate(DNS_AVG = as.numeric(DNS_AVG),
          PIT_NAME = toupper(PIT_NAME)
          )
-
-head(filtered_iop3)
 
 date_seq <- seq.Date(from = as.Date("2003-02-17"), 
                      to = as.Date("2003-02-25"), 
@@ -153,49 +96,96 @@ site_tables <- filtered_iop3 %>%
   group_split() %>%
   set_names(map_chr(., ~ unique(.x$PIT_NAME)))
 
-print(site_tables)
-
 ```
 
 ```{r}
 #SWE FOR EACH PIT SITE 
-swe_tables <- filtered_iop3 %>%
+swe_tables <- filtered_iop1 %>%
+  group_by(PIT_NAME) %>%
+  summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.7)
+
+swe_iop1 <- swe_tables %>% 
+  mutate(Date = seq(as.Date("2002-02-17"), as.Date("2002-02-24"), length.out = n()))
+
+#SWE FOR EACH PIT SITE 
+swe_tables3 <- filtered_iop3 %>%
   group_by(PIT_NAME) %>%
   summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.88)
-  
-print(swe_tables) 
+
+swe_iop2 <- swe_tables3 %>% 
+  mutate(Date = seq(as.Date("2002-03-17"), as.Date("2002-03-25"), length.out = n()))
 ```
 
 
-The first two tables we are presenting are from IOP 1 and IOP 3 from the CLPX dataset. We rearranged the data to include only the data from Rabbit Ears Pass, Colorado. As well as filtering for density averages and top depth height. This will allow us to calculate SWE later down the line with density * depth.  
-
-
-This figure shows the CAMELS dataset filtered to show only “q_mean” which is daily discharge values. The CAMELS dataset was filtered to show q_mean values greater than 5, to show when there was high discharge present. More cleaning of the data will need to be done to filter out specific USGS gauge sites that we are interested in. With that, we might need to change the parameter of  q_mean >5.  
-
-4. Identifying Methods 
-To answer our research question, we will integrate our findings to summarize and compare SWE and streamflow values over time and space, show the visual trends and potential anomalies, and evaluate the linearity of the relationship. To do this, we will investigate the relationship between snow water equivalent and streamflow in Rabbit Ears Pass through a correlation-based modeling approach. Our focus is on the melt season, analyzing March SWE values and their association with April–June streamflow. We will create scatterplots to visualize the relationship between SWE (from CLPX) and streamflow (from CAMELS) across different years, summarize statistics to describe the distribution of SWE and streamflow values, and build models that help test the relationship. We will use a simple linear regression model, as well as run multiple tests we have learned in the lab on it to determine whether a linear relationship exists, summarize the findings, and quantify its strength. This model will help us assess the potential for predicting streamflow based on SWE alone. 
-
+```{r}
+swe_tables <- swe_tables %>%
+   mutate(PIT_NAME = toupper(trimws(PIT_NAME)))
  
+site_tables_clean <- map(site_tables, function(df) {
+  df <- df %>%
+    mutate(PIT_NAME = toupper(trimws(PIT_NAME))) %>%
+    left_join(swe_tables, by = "PIT_NAME")
+  return(df)
+})
 
-To support this, we have begun filtering the CAMELS streamflow data using a q_mean > 5 threshold to isolate high-flow years. This gave us 38 candidate years for closer analysis, which may correspond to higher-SWE periods. We are also filtering our SWE data using site-specific identifiers—such as isolating records for the Reabbit Ears site from IOP datasets—to improve spatial alignment between snow pit locations and downstream gage stations. This preprocessing step helps address the common challenge of inconsistent site matching, while narrowing our focus to sites with the most reliable and relevant measurements. 
-
-We currently have access to key datasets necessary for our analysis. This includes the aforementioned SWE data from CLPX (Cold Land Processes Field Experiment), which provides high-resolution snow depth and density data from snow pit measurements, and streamflow and meteorological data from CAMELS (Catchment Attributes and Meteorology for Large-Sample Studies). 
-
- 
-
-We anticipate few challenges. There is limited coverage of time for our SWE data, which may constrain predictive power. Our choice of a linear regression model may introduce limitations, as it assumes a linear relationship and does not incorporate other potential contributing environmental influences already known to affect stream flow in general that may uniquely impact our region, such as non-snow precipitation, local topography, elevation, soil composition, and potential human influences. These are limitations we accept due to our own constraints in available data and time. 
-
- 
-
-Nonetheless, these methods allow us to assess a clear, testable relationship between SWE and streamflow using accessible, real-world data. They form a foundational approach for ecosystem science by helping us identify potential predictive relationships and establish baseline trends. This work will lay the groundwork for future, more complex models—such as multivariate regression—that can better account for the additional variables and challenges described above. 
+   
+swe_tables <- as_tibble(swe_tables)
+swe_tables3 <- as_tibble(swe_tables3)
 
 
+# IOP1
+swe_iop1 <- swe_tables %>% 
+  mutate(Date = seq.Date(as.Date("2002-02-17"), as.Date("2002-02-24"), length.out = n()))
+
+
+# IOP3
+swe_iop3 <- swe_tables3 %>% 
+  mutate(Date = seq.Date(as.Date("2002-03-17"), as.Date("2002-03-25"), length.out = n()))
+
+
+
+```
+
+The first two tables we are presenting are from IOP 1 and IOP 3 from the CLPX dataset. We rearranged the data to include only the data from Rabbit Ears Pass, Colorado. As well as filtering for density averages and top depth height. This will allow us to calculate SWE later down the line with density \* depth.
 
 
 ```{r}
-#SWE over time 
-#streamflow over time 
+library(sf)
+x <- dataRetrieval::whatNWISdata(siteNumber = "09041090")
 
+spatial_site1 <- x[1, ] %>% 
+  st_as_sf(coords = c("dec_long_va", "dec_lat_va"), crs = 4326)
+
+counties <- AOI::aoi_get(state = "Colorado", county = "all")
+
+ggplot() +
+  geom_sf(data = counties, fill = "white", color = "gray50") +
+  geom_sf(data = spatial_site1, color = "red", size = 3) +
+  labs(title = "USGS Muddy Creek Gage 09041090 in Rabbit Ears Pass, Colorado",) +
+  theme_minimal()
+
+```
+Figure 1. Map of USGS Muddy Creek Gage #09041090 in Rabbit Ears Pass within Colorado.  
+
+## Identifying Methods
+
+To establish a correlation between SWE and stream flow, we first obtained the SWE data from NASA CLPX (Cold Land Processes Field Experiment,) and the stream flow data from USGS NWIS (National Water Information System,) Gage 09041090 in Muddy Creek near Rabbit Ears Pass, where the snow pits were dug to gather the SWE data. Once the stream flow data from the given gage site was downloaded into R, we filtered the date range to only Feb-April in 2002 and 2003 to match the date range of the SWE data. We then cleaned the two data sets by removing any NA's and ensuring they were in the correct structure to accommodate the models and other analysis methods they would be fit to. 
+
+We began by analyzing the two variables separately to understand their individual behavior in relation to time from Feb-April. To visualize SWE, we looked at two observation periods within two years. Intense Observation period one from February 2002 and Intense Observation period three from march 2003 were used to assess changes in snow pack from a years time. We also narrowed down a location to the Rabbit Ears - Buffalo Pass area. The data were filtered  to only include these points and location. A calculation was performed on depth and density to gather snow water equivalent values. We looked at gathering averages and assigning date values to the dataset to be able to join with streamflow and perfom model testing. 
+
+To visualize stream flow, we first mapped the location of the Muddy Creek 09041090 USGS Gage within Colorado to visualize where the site was in relation to the Rabbit Ears Pass region and determine that the two data sites were indeed of close proximity to one another. We then created a time series decomposition of the stream flow trend line from February to April to assess how the stream flow rate changed during peak snow melt season. 
+
+We then joined the SWE and stream flow data with the plan to run a linear regression model between the two variables to quantify their correlation; However, when that proved unsuccessful, we ran a linear model with only stream flow and analyzed the variance between actual vs predicted stream flow in attempts to understand how predicted stream flow behaves as SWE values change. From the regression, we also ran a statistical test measuring root mean squared error, r squared, and mean absolute error in the predicted stream flow outputs to establish whether the model was credible in it's predictions.
+
+To statistically assess the SWE-streamflow relationship, we developed regression models using the tidymodel workflows developed from a recipe, expanding the modeling to include polynomial and spline regressions with the potential of capturing non-linear relationships in the data.  Models were trained on the cleaned dataset, and each model's predictions were visualized alongside the measured values.  Each prediction model was evaluated using root mean square error (RMSE) and R-squared (RSQ).
+
+Despite the thoughtfulness of our methodology, we encountered several limitations.  The SWE dataset contained a limited number of observations, which constrained model complexity and skewed the perceived accuracy of the predictive workflows.  Our models did not account for other environmental variables that influence streamflow, such as precipitation, temperature, soil composition, topographic heterogeneity, or anthropogenic modifications.  These omissions were due to constraints in both time and data availability.  In spite of these issues, this approach allowed us to establish and quantify a testable relationship between SWE and streamflow using real-world environmental data and reproducible statistical tools. 
+
+## Results
+
+Streamflow (Muddy Creek USGS gauge)
+
+```{r}
 library(dataRetrieval)
 library(tsibble)
 library(dplyr)
@@ -217,18 +207,13 @@ streamflow_2003 <- readNWISdv(siteNumber = "09041090",
   summarise(Flow = mean(Flow)) 
 
 ```
+
 ```{r}
 muddy2002_flow_tb <- as_tsibble(streamflow_2002)
 
 muddy2003_flow_tb <- as_tsibble(streamflow_2003)
 
 ```
-```{r}
-head(muddy2002_flow_tb)
-
-head(muddy2003_flow_tb)
-```
-
 ```{r}
 library(feasts)
 muddy2002_decomp <- muddy2002_flow_tb |>
@@ -240,11 +225,10 @@ glimpse(muddy2002_flow_tb)
 muddy2003_decomp <- muddy2003_flow_tb |>
   model(STL(Flow ~ season(window = "periodic"))) |>
   components()
-
-glimpse(muddy2002_flow_tb)
-
 ```
+Table 3. Muddy Creek (2002) Streamflow data correlated to dates in February and March.
 ```{r}
+
 muddy2002_decomp <- as_tibble(muddy2002_decomp)
 
 muddy2002_decomp_long <- muddy2002_decomp |>
@@ -252,37 +236,391 @@ muddy2002_decomp_long <- muddy2002_decomp |>
   pivot_longer(cols = c(trend, season_week, remainder),
                names_to = "component",
                values_to = "value")
+muddy2002_trend <- muddy2002_decomp_long |> 
+  filter(component == "trend")
 
-ggplot(muddy2002_decomp_long, aes(x = Date, y = value)) +
+ggplot(muddy2002_trend, aes(x = Date, y = value)) +
   geom_line(color = "steelblue") +
-  facet_wrap(~ component, scales = "free_y", ncol = 1) +
   labs(
-    title = "STL Decomposition of Muddy Creek Streamflow",
+    title = "Average Muddy Creek Streamflow Over Time ",
     x = NULL,
-    y = "Discharge (cfs)"
+    y = "Streamflow (cfs)"
   ) +
   theme_minimal()
 
 ```
-Our results show that the streamflow increases in both 2002 and 2003. There is an upward trend occuring. Overall, there is an overarching increasing in streamflow as you get closer to the summer months. Streamglow increases in value across time. 
+Figure 2. Muddy Creek streamflow in cfs shown over the months of February 01 through April 01 2002. 
+
+(results)
+
 ```{r}
+#SWE FOR EACH PIT SITE 
 swe_tables <- filtered_iop1 %>%
   group_by(PIT_NAME) %>%
   summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.7)
-  
-print(swe_tables) 
+
+flextable(swe_tables)
+
+swe_iop1 <- swe_tables %>% 
+  mutate(Date = seq(as.Date("2002-02-17"), as.Date("2002-02-24"), length.out = n()))
 ```
+Table 2. Snow Water Equivalent (SWE) values for each pit site within the RBSP Observation Period. 
+(results)
+While looking at SWE values for IOP one, we see that the values vary greatly. There is a range of 196.3737 kg/m^2 between the minimum value an maximum value. This range is about double the size of IOP 3. Most values stay consistently around 800-850, kg/m^2. 
+
 ```{r}
-swe_tables <- filtered_iop3 %>%
+#SWE FOR EACH PIT SITE 
+swe_tables3 <- filtered_iop3 %>%
   group_by(PIT_NAME) %>%
   summarise(swe = mean(DNS_AVG, na.rm = TRUE) * 2.88)
-  
-print(swe_tables) 
+
+flextable(swe_tables3)
+
+swe_iop2 <- swe_tables3 %>% 
+  mutate(Date = seq(as.Date("2002-03-17"), as.Date("2002-03-25"), length.out = n()))
 ```
-SWE values decreases from 2002-2003. There are higher values in 2002 than 2003. There are less values present in 2003, but the values in 2002 have a higher average mean.  
+Table 3. Snow Water Equivalent values for IOP 3 taken in March 2003. 
+(results)
+The SWE chart for IOP 3 includes much less values, although we can still gather information. The range of this data is 105.0609 kg/ m^2. This is about half as large of a range as IOP 1. 
 
-Discussion 
+```{r}
+library(flextable)
+joined_data <- left_join(swe_iop1, swe_iop3, by = "Date") %>%
+  left_join(muddy2002_trend, by = "Date")
 
-Our results show a correlation between streamflow and snow water equivalent (SWE). SWE and snow depth are directly related to snow density and variability (Bormann et al., 2013). After the analysis of the NASA Cold Land Processes Experiment data, we noticed trends in the SWE and bulk density amongst two observation periods in the Rabbit Ears – Buffalo Pass area in northern Colorado. In the first and third observation periods in late February 2002/3, there were similar values calculated for SWE, and similar trends among the bulk density graphs. The fluctuation patterns are the same. These observed changes can be explained by seasonal variation in snowfall from late February to late March, when the data from IOP one and IOP two were collected. IOP four was included in the SWE analysis to show the similarities between IOP one and two in comparison to the large difference between IOP four. 
+flextable(joined_data)
+```
+Table 4. RBSP Pit site SWE data linked to streamflow trend values in cfs. 
 
-Streamflow increase from 2002-03 shows an opposite trend from snow water equivalent. More reasearch should be done to prove why this occurs. 
+Snow Water Equivalent data joined to the streamflow trend. This flextable does not tell us a lot about the data, but tells helps to visualizes dates to data, noting the 2002 data points. 
+
+```{r}
+library(ggplot2)
+
+swe_tables <- swe_tables %>%
+  mutate(PIT_NAME = sub("RBSP", "", PIT_NAME))
+
+
+plot1 <- ggplot(swe_tables, aes(x = PIT_NAME, y = swe)) +
+  geom_bar(stat = "identity", fill = "darkblue") +
+  scale_y_continuous(
+    breaks = seq(500, 1000, by = 100),          
+    minor_breaks = seq(500, 1000, by = 25)      
+  ) +
+  labs(
+    title = "Average SWE by Pit Site",
+    x = "Pit Name",
+    y = "SWE (mm)"
+  ) +
+  coord_cartesian(ylim = c(600, NA)) +  
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
+
+```{r}
+library(ggplot2)
+
+swe_tables3 <- swe_tables3 %>%
+  mutate(PIT_NAME = sub("RBSP", "", PIT_NAME))
+
+
+plot2 <- ggplot(swe_tables3, aes(x = PIT_NAME, y = swe)) +
+  geom_bar(stat = "identity", fill = "darkblue") +
+  scale_y_continuous(
+    breaks = seq(500, 1000, by = 100),          
+    minor_breaks = seq(500, 1000, by = 25)      
+  ) +
+  labs(
+    title = "Average SWE by Pit Site",
+    x = "Pit Name",
+    y = "SWE (mm)"
+  ) +
+  coord_cartesian(ylim = c(600, NA)) +  
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+library(patchwork)
+
+plot1 + plot2
+```
+Figure 3. Average Snow water equivalent values in milimeters plotted from RBSP observation period 1 and 2 across 16 pit sites. 
+
+This section analyzes the snow water equivalent amongst space and time within the Rabbit Ears - Buffalo Pass area. Among IOP 1 and IOP 3 there are observable differences. In IOP 1 the values are higher than IOP 3 when looking at SWE during the same months of the year. In IOP 1 values range from \~ 775mm to \~ 975mm, noting around a 200mm variation within the observation period. In IOP 3, there are less data to compare from, but the range of values is much lower from \~ 700mm to \~ 800 mm.
+
+Linear Regression between SWE and Streamflow at Muddy Creek 
+```{r}
+# IOP1
+swe_iop1$Date %>% table()
+
+swe_iop1 <- swe_tables %>% 
+  mutate(Date = rep(as.Date("2002-02-17"), 16)) %>%
+  group_by(Date) %>%
+  summarise(meanswe = mean(swe, na.rm = TRUE))
+```
+
+IOP3
+```{r}
+swe_iop3$Date %>% table()
+
+swe_iop3 <- swe_tables3 %>% 
+  mutate(Date = rep(as.Date("2002-03-17"), 3)) %>%
+  group_by(Date) %>%
+  summarise(meanswe = mean(swe, na.rm = TRUE))
+```
+
+```{r}
+swe_all <- bind_rows(swe_iop1, swe_iop3)
+  
+
+joined_data <- left_join(swe_all, muddy2002_trend, by = "Date")
+
+flextable(joined_data)
+
+```
+Table 5. SWE and trend value data across the same dates. 
+(results)
+This table shows the data joined by date. Average SWE values were taken from each IOP to give a comprehensive overview of the dataset, even though the range is large these do accurately represnt the majority of the dataset. We can notice an inverse relationship between SWE (decreasing) and stremflow values (increasing)
+
+```{r}
+library(ggplot2)
+
+ggplot(joined_data, aes(x = value, y = meanswe)) +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  labs(
+    title = "Linear Regression of meanswe ~ value",
+    x = "value",
+    y = "meanswe"
+  )
+```
+Figure 4. Linear regression model of joined meanswe and value data sets. Correlation shown as value increases, swe decreases, highlighting the relationship between the two variables. 
+```{r}
+model1 <- lm(meanswe ~ Date, data = joined_data)
+
+print(model1)
+```
+Table 6. This shows us our intercept and value for the linear model we created for SWE and streamflow value joined. 
+
+```{r}
+model <- lm(meanswe ~ Date, data = joined_data)
+```
+
+```{r}
+library(ggplot2)
+mod1 <- ggplot(joined_data, aes(x = Date, y = meanswe)) + 
+  geom_line() + 
+  geom_point() + 
+  labs(title = "Trend of Meanswe Over Time")
+```
+
+```{r}
+mod2 <- ggplot(joined_data, aes(x = Date, y = value)) +
+  geom_line() +
+  labs(title = "Streamflow trend", x = "Date", y = "Muddydecomptrend value") +
+  theme_minimal()
+```
+
+```{r}
+mod1 + mod2
+```
+Figure 5a. Plotted the average SWE for IOP 1 and IOP 3 against time, showing the decrease in swe from feb 2002 to march 2003.
+Figure 5b. This model shows us the relationship between streamflow value and date, highlighting the inverse relationship between temporally between SWE and streamflow trend.
+
+(results)
+Figure 5 shows us the inverse relationship between streamflow values and SWE. As time increases from February to March, we can really see how these values have an inverse realtionship. These values are also showing almost perfectly correlated because of the nature that there is only two data points in the plots. 
+
+
+```{r}
+# Split Data
+
+split <- initial_split(muddy2002_trend, prop = 0.8, strata = value)  
+train <- training(split)  
+test  <- testing(split)  
+folds <- vfold_cv(train, v = 10)
+
+# Make Recipe
+
+rec = recipe(value ~ . , data = train) |> 
+  step_rm(component) |>  
+  step_dummy(all_nominal()) |>  
+  step_scale(all_numeric_predictors()) |>  
+  step_center(all_numeric_predictors()) 
+
+# Model 
+
+lm_mod <- linear_reg() |> 
+  set_engine("lm") |> 
+  set_mode("regression")
+
+fit <- workflow() |> 
+  add_recipe(rec) |> 
+  add_model(lm_mod) |> 
+  fit(data = train)
+
+predictions <- augment(fit, new_data = test) |> 
+  mutate(diff = abs(value - .pred)) 
+
+metrics(predictions, truth = value, estimate = .pred)
+
+ggplot(predictions, aes(x = value, y = .pred)) + 
+  geom_point() + 
+  geom_abline() +
+  labs(title = "Linear Stream Flow Model", 
+       x = "Actual flow rate", 
+       y = "Predicted flow rate") + 
+  theme_minimal()
+```
+Figure 6. Linear regression Model flow for streamflow rate actual vs predicted. 
+Table 7. Standard values for rmse, rsq, and mae for streamflow values.  
+Demonstrated in table 7, the linear regression model to predict streamflow generated a root mean squared error of roughly 2.258, R squared of roughly .791, and a mean average error of roughly 1.9. In figure 6, the visualized relationship between predicted and actual stream flow rate demonstrates some level of variance in data, but overall a generalized linear relationship.
+###More prediction models
+```{r}
+# How many SWE dates are available?
+#nrow(swe_per_date)
+
+# How many streamflow dates are available?
+#nrow(streamflow_2002)
+
+# How many match?
+#length(intersect(streamflow_2002$Date, swe_per_date$Date))
+
+```
+There are only 5 points that these models are being trained on. This is why we can not run any models that require folds such as random forest or boosted trees.  To maintain with the data we have, we will find and use simple models.  We chose Linear Regression, Polynomial Regression,and Spline Regression
+
+```{r}
+# Fixing the data
+# Drop the literally useless first row
+iop1raw <- iop1[-1, ]
+iop3raw <- iop3[-1, ]
+
+# Convert columns to character to prevent errors
+iop1_raw <- mutate_all(iop1, as.character)
+iop3_raw <- mutate_all(iop3, as.character)
+
+# Combine and clean
+snow_data <- bind_rows(iop1_raw, iop3_raw) %>%
+  mutate(
+    DNS_AVG   = as.numeric(DNS_AVG),
+    TOP       = as.numeric(TOP),
+    BOT       = as.numeric(BOT),
+    DATE      = ymd(DATE),
+    thickness = TOP - BOT,
+    SWE_layer = thickness * DNS_AVG
+  )
+# Merging SWE and streamflow
+model_data <- snow_data %>%
+  group_by(DATE) %>%
+  summarise(SWE = sum(SWE_layer, na.rm = TRUE), .groups = "drop") %>%
+  rename(Date = DATE) %>%
+  left_join(streamflow_2002, by = "Date") %>%
+  mutate(SWE_m = SWE / 1000)
+
+# dropping any nas I forgot
+model_data2 <- model_data %>%
+  select(Flow, SWE_m) %>%
+  drop_na()
+library(tidymodels)
+library(workflowsets)
+
+# Build recipe
+recipe <- recipe(Flow ~ SWE_m, data = model_data2)
+recipes <- list(
+  linear = recipe,
+  poly   = recipe %>% step_poly(SWE_m, degree = 2),
+  spline = recipe %>% step_bs(SWE_m, options = list(degree = 3))
+)
+
+# Define model and workflows
+model_spec <- linear_reg() %>% set_engine("lm")
+
+wf_list <- map(recipes, ~ workflow() %>% add_recipe(.x) %>% add_model(model_spec))
+
+wf_tbl <- tibble(
+  wflow_id = names(wf_list),
+  workflow = wf_list
+)
+
+# Fit models to predict
+wf_fits <- wf_tbl %>%
+  mutate(
+    fitted = map(workflow, ~ fit(.x, data = model_data2)),
+    preds  = map(fitted, ~ augment(.x, new_data = model_data2))
+  )
+
+# Plot
+all_preds <- wf_fits %>%
+  select(wflow_id, preds) %>%
+  unnest(preds)
+
+ggplot(all_preds, aes(x = SWE_m, y = .pred, color = wflow_id)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(aes(y = Flow), color = "black", size = 2) +
+  labs(title = "Model Predictions vs Actual Flow",
+       x = "SWE (meters)", y = "Flow (cfs)", color = "Model") +
+  coord_cartesian(ylim = c(7, 9)) +
+  theme_minimal()
+```
+Figure 7. This graph shows fitted values from three regression types: linear, polynomial (2nd degree) and spline (basis spline), plotted against observed streamflow. The black dots show the observed flow, and colored lines show predictions by the model. The spline and polynomial models better visually approximate observed values than the linear model.
+
+```{r}
+
+#Find RMSE and R²
+wf_scores <- wf_fits %>%
+  mutate(
+    rmse = map_dbl(preds, ~ sqrt(mean((.x$.pred - .x$Flow)^2))),
+    rsq  = map_dbl(preds, ~ cor(.x$.pred, .x$Flow)^2)
+  ) %>%
+  select(wflow_id, rmse, rsq)
+print(wf_scores)
+
+
+#Visualizing the accuracy of the plots
+wf_scores_long <- wf_scores %>%
+  pivot_longer(cols = c(rmse, rsq), names_to = "metric", values_to = "value")
+
+ggplot(wf_scores_long, aes(x = wflow_id, y = value, fill = metric)) +
+  geom_col(position = "dodge") +
+  labs(title = "Model Performance: RMSE and R²",
+       x = "Model", y = "Value", fill = "Metric") +
+  theme_minimal()
+
+```
+
+Figure 8. With our 5 data points, Spline is very slightly the most accurate and linear is dramatically the least. 
+
+## Discussion
+
+Our results show an inverse relationship between streamflow values and snow water equivalent (SWE). SWE and snow depth are directly related to snow density and variability (Bormann et al., 2013). After analyzing the NASA Cold Land Processes Experiment data, we noticed trends in the SWE and bulk density amongst the two observation periods in the Rabbit Ears – Buffalo Pass area in northern Colorado. In the first and third observation periods in late February 2002/3, there were similar values calculated for SWE, although we noticed the decrease in the range of values for each IOP. These observed changes can be explained by seasonal variation in snowfall from late February to late March, when the data from IOP one and IOP two were collected. IOP four was included in the SWE analysis to show the similarities between IOP one and two in comparison to the large difference between IOP four.
+We analyzed streamflow discharge at the Muddy Creek USGS gauge during the late winter to early spring melt season of 2002. Daily streamflow data were decomposed to isolate the long-term trend across February and March. As shown in Figure 1, streamflow remained relatively stable during early February (~5 cfs) but began to increase in late February and rose sharply at the end of March, reaching 25 cfs by March 31.
+We then compared snow water equivalent (SWE) across two CLPX Intensive Observation Periods (IOP1 and IOP3) in the Rabbit Ears–Buffalo Pass study area. SWE was calculated as the product of snow density and depth, averaged across pit sites.  Figure 2 displays the SWE values by pit site. IOP1 (February 2002) showed generally higher SWE values, ranging from ~775 mm to 975 mm. In contrast, IOP3 (March 2003) SWE values were lower and ranged from ~700 mm to 800 mm. This indicates some difference between the two datasets, whether that was a decline in SWE between the two years, between the months, or between the diversity of pits measured.
+These results could indicate a possible relation between the decline in SWE and the increase in streamflow, though more research is needed to conclude. A linear regression model, shown in Figure 6, also displays this trend between SWE and Streamflow. 
+Additionally, we modeled the relationship between SWE and observed streamflow using three regression techniques: linear, polynomial (2nd degree), and spline (basis spline). All models were trained on the same dataset, and predictions were compared visually and statistically. As seen in Figure 8, both the spline and polynomial models captured the observed trend in streamflow more closely than the linear model. The linear regression underestimated the curvature between the observed data set (represented by the black dots), which lent to its inaccuracy.
+
+To quantify model performance, we compared root mean square error (RMSE) and coefficient of determination (R²) for each model (Figure 4). The linear model had the highest RMSE and the lowest R², indicating a poor fit. Both the polynomial and spline models reduced error and increased R², with the spline model performing best overall.
+These results also indicate that SWE could be a useful predictor of early-season streamflow at Muddy Creek, but the relationship is not strictly linear.
+
+We would need further steps to clean the data and look at future years. Right now, this dataset is very limited, and results are limited to a short time frame. This project can help to be a stepping stone for methods for future analysis of snow water equivalent within the NASA CLPX dataset, as well as at different USGS gauge sites. 
+
+## Conclusion
+
+During the analysis of the NASA CLPX dataset and the Muddy Creek streamflow data, we observed a clear inverse relationship between SWE and streamflow values during the seasonal transition period. When the calculated SWE values decreased, the streamflow values increased, which is not what we expected to see in our hypothesis of the relationship. The differences in values in SWE for IOP 1 and IOP 3 highlight the seasonal variability of snowpack properties. Models further supported the potential for a relationship between variables, with the polynomial and spline regressions doing better than linear models. Additional aspects and mechanisms, such as temperature, precipitation, and snowpack, may also influence downstream behaviors. Research should be furthered by looking at different USGS gauges in Colorado, as well as the CLPX dataset should be assessed in different regions. 
+
+## Literature Cited:
+
+Anderton, S. P., White, S. M., & Alvera, B. (2004). Evaluation of spatial variability in snow water equivalent for a high mountain catchment. Hydrological Processes, 18(3), 435–453. https://doi.org/10.1002/hyp.1319
+
+Bormann, K. J., Westra, S., Evans, J. P., & McCabe, M. F. (2013). Spatial and temporal variability in seasonal snow density. Journal of Hydrology, 484, 63–73. https://doi.org/10.1016/j.jhydrol.2013.01.032
+
+Hosaka, M., Nohara, D., & Kitoh, A. (2005). Changes in snow cover and snow water equivalent due to global warming simulated by a 20km-mesh global atmospheric model. Sola, 1, 93-96. https://doi.org/10.2151/sola.2005-025
+
+Park, S.-Y., Moon, H.-T., Kim, J.-S., & Lee, J.-H. (2025). Assessing the impact of human-induced and climate change-driven streamflow alterations on freshwater ecosystems. Ecohydrology & Hydrobiology, 25(1), 1–9. https://doi.org/10.1016/j.ecohyd.2023.09.003
+
+US Department of Agriculture. (n.d.). Water supply forecasting. Natural Resources Conservation Service. https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/water-supply#:\~:text=A%20complex%20network%20of%20dams,well%20as%20agricultural%20planting%20decisions.
+
+CLPX data citation
+
+Elder, K., Cline, D., Liston, G. E., & Armstrong, R. (2009). NASA Cold Land Processes Experiment (CLPX 2002/03): Field Measurements of Snowpack Properties and Soil Moisture. https://doi.org/10.1175/2008JHM877.1
