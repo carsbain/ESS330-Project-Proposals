@@ -72,8 +72,8 @@ site_tables <- filtered_iop1 %>%
   group_split() %>%
   set_names(map_chr(., ~ unique(.x$PIT_NAME)))
 
-flextable(filtered_iop1)
-  head(10)
+flextable(head(filtered_iop1, 10))
+
 ```
 Table 1. Average Density and Top depth shown for measurements within each pit site in the Rabbit Ears Buffalo Pass Intense Observation Period in February 2002.
 
