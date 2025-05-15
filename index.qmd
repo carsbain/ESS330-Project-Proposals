@@ -14,6 +14,9 @@ authors:
     roles: writing 
     corresponding: false
 bibliography: references.bib
+format:
+  html:
+    self-contained: true
 ---
 
 # **Evaluating the Correlation between Snow Water Equivalent and Stream Flow in Rabbit Ears Pass, Colorado** 
@@ -624,11 +627,20 @@ Anderton, S. P., White, S. M., & Alvera, B. (2004). Evaluation of spatial variab
 
 Bormann, K. J., Westra, S., Evans, J. P., & McCabe, M. F. (2013). Spatial and temporal variability in seasonal snow density. Journal of Hydrology, 484, 63–73. https://doi.org/10.1016/j.jhydrol.2013.01.032
 
+Elder, K., Cline, D., Liston, G. E., & Armstrong, R. (2009). NASA Cold Land Processes Experiment (CLPX 2002/03): Field Measurements of Snowpack Properties and Soil Moisture. https://doi.org/10.1175/2008JHM877.1
+
 Hosaka, M., Nohara, D., & Kitoh, A. (2005). Changes in snow cover and snow water equivalent due to global warming simulated by a 20km-mesh global atmospheric model. Sola, 1, 93-96. https://doi.org/10.2151/sola.2005-025
 
 Park, S.-Y., Moon, H.-T., Kim, J.-S., & Lee, J.-H. (2025). Assessing the impact of human-induced and climate change-driven streamflow alterations on freshwater ecosystems. Ecohydrology & Hydrobiology, 25(1), 1–9. https://doi.org/10.1016/j.ecohyd.2023.09.003
 
 US Department of Agriculture. (n.d.). Water supply forecasting. Natural Resources Conservation Service. https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/water-supply#:\~:text=A%20complex%20network%20of%20dams,well%20as%20agricultural%20planting%20decisions.
+
+Sturm, M., Holmgren, J. (1998). Differences in compaction behaviour of three climate classes of snow. Annals of Glaciology, 26, 125-130. https://doi.org/10.3189/1998AoG26-1-125-130
+
+Sturm, M., Taras, B., Liston, G. E., Derksen, C., Jonas, T., & Lea, J. (2010). Estimating snow water equivalent using snow depth data and climate classes. Journal of Hydrometeorology, 11(6), 1380-1394. https://doi.org/10.1175/2010JHM1202.1
+
+Svoma, B. M. (2011). Winter Climatic Controls on Spring Snowpack Density in the Western United States. Arctic, Antarctic, and Alpine Research, 43(1), 118–126. https://doi.org/10.1657/1938-4246-43.1.118
+
 
 CLPX data citation
 
