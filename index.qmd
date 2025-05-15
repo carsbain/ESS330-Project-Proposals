@@ -258,7 +258,7 @@ ggplot(muddy2002_trend, aes(x = Date, y = value)) +
 ```
 Figure 2. Muddy Creek streamflow in cfs shown over the months of February 01 through April 01 2002. 
 
-(results)
+
 
 ```{r}
 #SWE FOR EACH PIT SITE 
@@ -272,7 +272,7 @@ swe_iop1 <- swe_tables %>%
   mutate(Date = seq(as.Date("2002-02-17"), as.Date("2002-02-24"), length.out = n()))
 ```
 Table 2. Snow Water Equivalent (SWE) values for each pit site within the RBSP Observation Period. 
-(results)
+
 While looking at SWE values for IOP one, we see that the values vary greatly. There is a range of 196.3737 kg/m^2 between the minimum value an maximum value. This range is about double the size of IOP 3. Most values stay consistently around 800-850, kg/m^2. 
 
 ```{r}
@@ -287,7 +287,7 @@ swe_iop2 <- swe_tables3 %>%
   mutate(Date = seq(as.Date("2002-03-17"), as.Date("2002-03-25"), length.out = n()))
 ```
 Table 3. Snow Water Equivalent values for IOP 3 taken in March 2003. 
-(results)
+
 The SWE chart for IOP 3 includes much less values, although we can still gather information. The range of this data is 105.0609 kg/ m^2. This is about half as large of a range as IOP 1. 
 
 ```{r}
@@ -389,7 +389,7 @@ flextable(joined_data)
 
 ```
 Table 5. SWE and trend value data across the same dates. 
-(results)
+
 This table shows the data joined by date. Average SWE values were taken from each IOP to give a comprehensive overview of the dataset, even though the range is large these do accurately represnt the majority of the dataset. We can notice an inverse relationship between SWE (decreasing) and stremflow values (increasing)
 
 ```{r}
@@ -437,7 +437,7 @@ mod1 + mod2
 Figure 5a. Plotted the average SWE for IOP 1 and IOP 3 against time, showing the decrease in swe from feb 2002 to march 2003.
 Figure 5b. This model shows us the relationship between streamflow value and date, highlighting the inverse relationship between temporally between SWE and streamflow trend.
 
-(results)
+(re
 Figure 5 shows us the inverse relationship between streamflow values and SWE. As time increases from February to March, we can really see how these values have an inverse realtionship. These values are also showing almost perfectly correlated because of the nature that there is only two data points in the plots. 
 
 
